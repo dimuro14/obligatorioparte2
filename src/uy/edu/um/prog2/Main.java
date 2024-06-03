@@ -7,16 +7,33 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static String inputDate() {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Ingrese el año de la fecha:");
+        int year = input.nextInt();
+
+        System.out.println("Ingrese el mes de la fecha:");
+        int month = input.nextInt();
+
+        System.out.println("Ingrese el día de la fecha:");
+        int day = input.nextInt();
+
+        return year + "-" + month + "-" + day;
+
+    }
+
     public static void main(String[] args) {
 
-        String opcion;
+        String option;
         Scanner input = new Scanner(System.in);
 
         do {
 
-            opcion = input.nextLine();
+            option = input.nextLine();
 
-            switch (opcion) {
+            switch (option) {
 
                 case "1":
 
@@ -40,7 +57,7 @@ public class Main {
 
             }
 
-        } while (!opcion.equals("0"));
+        } while (!option.equals("0"));
 
     }
 
