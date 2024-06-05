@@ -39,21 +39,30 @@ public class Main {
 
                     System.out.println("Obtener el top de las 10 canciones más escuchadas en un día (YYYY-MM-DD)");
 
+
+
                 case "2":
 
                     System.out.println("Obtener el top de las 5 canciones que aparecen en más top 50 en un día dado"); //O(n)
+
+
 
                 case "3":
 
                     System.out.println("Obtener el top de 7 artistas que más aparecen en los top 50 para un rango de fechas dado");
 
+
                 case "4":
 
                     System.out.println("Obtener la cantidad de veces que aparece un artista específico en un top 50 en una fecha dada");
 
+
+
                 case "5":
 
                     System.out.println("Obtener la cantidad de canciones con un tempo en un rango específico para un rango específico de fechas");
+
+
 
             }
 
