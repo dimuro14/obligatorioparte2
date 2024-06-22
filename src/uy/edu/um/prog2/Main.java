@@ -1,11 +1,10 @@
 package uy.edu.um.prog2;
 
-import com.opencsv.*;
 import com.opencsv.exceptions.CsvValidationException;
-
 import uy.edu.um.adt.linkedlist.MyLinkedListImpl;
 import uy.edu.um.adt.linkedlist.MyList;
 import uy.edu.um.prog2.entities.Cancion;
+import uy.edu.um.prog2.entities.ControladorCanciones;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,12 +34,23 @@ public class Main {
 
     }
 
-    public static void main(String[] args) throws IOException, CsvValidationException {
+    public static void main(String[] args) {
+
+        ControladorCanciones nuevoControlador = new ControladorCanciones();
 
         String option;
         Scanner input = new Scanner(System.in);
 
         do {
+
+            System.out.println(
+                    "SELECCIONE UNA OPCIÓN:\n" +
+                    "1- Obtener el top de las 10 canciones más escuchadas en un día (YYYY-MM-DD)\n" +
+                    "2- Obtener el top de las 5 canciones que aparecen en más top 50 en un día dado\n" +
+                    "3- Obtener el top de 7 artistas que más aparecen en los top 50 para un rango de fechas dado\n" +
+                    "4- Obtener la cantidad de veces que aparece un artista específico en un top 50 en una fecha dada\n" +
+                    "5- Obtener la cantidad de canciones con un tempo en un rango específico para un rango específico de fechas"
+            );
 
             option = input.nextLine();
 
@@ -48,84 +58,52 @@ public class Main {
 
                 case "1":
 
-                    System.out.println("Obtener el top de las 10 canciones más escuchadas en un día (YYYY-MM-DD)");
-                    Path filePath = Paths.get("C:", "Users", "luisd", "OneDrive", "Escritorio", "universal_top_spotify_songs.csv");
+                    String fechaDada = inputDate();
 
-                    System.out.println(filePath);
+                    MyList<Cancion> topDiezCanciones = new MyLinkedListImpl<>();
 
-                    CSVParser parser = new CSVParserBuilder()
-                            .withSeparator(',')
-                            .withIgnoreQuotations(false)
-                            .build();
+                    for (int i = 0; i < nuevoControlador.obtenerCantidadCanciones(); i++) {
 
-                    Reader reader = Files.newBufferedReader(filePath);
-                    CSVReader csvReader = new CSVReaderBuilder(reader)
-                            .withSkipLines(1)
-                            .withCSVParser(parser)
-                            .build();
+                        Cancion cancionObtenida = nuevoControlador.obtenerCancion(i);
 
-                    MyList<Cancion> listaCanciones = new MyLinkedListImpl<>();
+                        if (cancionObtenida == null || !cancionObtenida.obtenerFecha().equals(fechaDada)) {
 
-                    for (int i = 0; i < 748803; i++) {
+                            continue;
 
-                        String[] cancionLeida = csvReader.readNext();
-                        //System.out.println(cancionLeida);
-                        System.out.println(Arrays.toString(cancionLeida));
+                        }
 
-                        System.out.println(cancionLeida.length);
+                        if (topDiezCanciones.size() < 10) {
 
-                        Cancion nuevaCancion = new Cancion(
-                                cancionLeida[0],
-                                cancionLeida[1],
-                                cancionLeida[2],
-                                Integer.parseInt(cancionLeida[3]),
-                                Integer.parseInt(cancionLeida[4]),
-                                Integer.parseInt(cancionLeida[5]),
-                                cancionLeida[6],
-                                cancionLeida[7],
-                                Integer.parseInt(cancionLeida[8]),
-                                Boolean.parseBoolean(cancionLeida[9]),
-                                Integer.parseInt(cancionLeida[10]),
-                                cancionLeida[11],
-                                cancionLeida[12],
-                                Double.parseDouble(cancionLeida[13]),
-                                Double.parseDouble(cancionLeida[14]),
-                                Integer.parseInt(cancionLeida[15]),
-                                Double.parseDouble(cancionLeida[16]),
-                                Integer.parseInt(cancionLeida[17]),
-                                Double.parseDouble(cancionLeida[18]),
-                                Double.parseDouble(cancionLeida[19]),
-                                Double.parseDouble(cancionLeida[20]),
-                                Double.parseDouble(cancionLeida[21]),
-                                Double.parseDouble(cancionLeida[22]),
-                                Double.parseDouble(cancionLeida[23]),
-                                Integer.parseInt(cancionLeida[24])
-                        );
+                            topDiezCanciones.add(cancionObtenida);
+
+                        }
 
                     }
-
-                    option = "0";
 
                     break;
 
                 case "2":
 
-                    System.out.println("Obtener el top de las 5 canciones que aparecen en más top 50 en un día dado"); //O(n)
+
+
                     break;
 
                 case "3":
 
-                    System.out.println("Obtener el top de 7 artistas que más aparecen en los top 50 para un rango de fechas dado");
+
+
                     break;
 
                 case "4":
 
-                    System.out.println("Obtener la cantidad de veces que aparece un artista específico en un top 50 en una fecha dada");
+
+
                     break;
 
                 case "5":
 
-                    System.out.println("Obtener la cantidad de canciones con un tempo en un rango específico para un rango específico de fechas");
+
+
                     break;
 
             }

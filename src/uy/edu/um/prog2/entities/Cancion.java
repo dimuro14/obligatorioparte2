@@ -91,6 +91,16 @@ public class Cancion {
 
     }
 
+    public String obtenerFecha() {
 
+        return this.snapshot_date;
+
+    }
+
+    public int obtenerPopularidad() {
+
+        return this.popularity;
+
+    }
 
 }
