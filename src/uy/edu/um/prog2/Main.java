@@ -5,6 +5,7 @@ import com.opencsv.exceptions.CsvValidationException;
 
 import uy.edu.um.adt.linkedlist.MyLinkedListImpl;
 import uy.edu.um.adt.linkedlist.MyList;
+import uy.edu.um.prog2.entities.Cancion;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,7 +55,7 @@ public class Main {
 
                     CSVParser parser = new CSVParserBuilder()
                             .withSeparator(',')
-                            .withIgnoreQuotations(true)
+                            .withIgnoreQuotations(false)
                             .build();
 
                     Reader reader = Files.newBufferedReader(filePath);
@@ -63,15 +64,43 @@ public class Main {
                             .withCSVParser(parser)
                             .build();
 
-                    MyList<String> songList = new MyLinkedListImpl<>();
-
-                    //[spotify_id, "name", "artists", "daily_rank", "daily_movement", "weekly_movement", "country", "snapshot_date", "popularity", "is_explicit", "duration_ms", "album_name", "album_release_date", "danceability", "energy", "key", "loudness", "mode", "speechiness", "acousticness", "instrumentalness", "liveness", "valence", "tempo", "time_signature"";;]
+                    MyList<Cancion> listaCanciones = new MyLinkedListImpl<>();
 
                     for (int i = 0; i < 748803; i++) {
 
-                        String[] newSong = csvReader.readNext();
-                        System.out.println(Arrays.toString(newSong));
-                        System.out.println(newSong[7]);
+                        String[] cancionLeida = csvReader.readNext();
+                        //System.out.println(cancionLeida);
+                        System.out.println(Arrays.toString(cancionLeida));
+
+                        System.out.println(cancionLeida.length);
+
+                        Cancion nuevaCancion = new Cancion(
+                                cancionLeida[0],
+                                cancionLeida[1],
+                                cancionLeida[2],
+                                Integer.parseInt(cancionLeida[3]),
+                                Integer.parseInt(cancionLeida[4]),
+                                Integer.parseInt(cancionLeida[5]),
+                                cancionLeida[6],
+                                cancionLeida[7],
+                                Integer.parseInt(cancionLeida[8]),
+                                Boolean.parseBoolean(cancionLeida[9]),
+                                Integer.parseInt(cancionLeida[10]),
+                                cancionLeida[11],
+                                cancionLeida[12],
+                                Double.parseDouble(cancionLeida[13]),
+                                Double.parseDouble(cancionLeida[14]),
+                                Integer.parseInt(cancionLeida[15]),
+                                Double.parseDouble(cancionLeida[16]),
+                                Integer.parseInt(cancionLeida[17]),
+                                Double.parseDouble(cancionLeida[18]),
+                                Double.parseDouble(cancionLeida[19]),
+                                Double.parseDouble(cancionLeida[20]),
+                                Double.parseDouble(cancionLeida[21]),
+                                Double.parseDouble(cancionLeida[22]),
+                                Double.parseDouble(cancionLeida[23]),
+                                Integer.parseInt(cancionLeida[24])
+                        );
 
                     }
 
