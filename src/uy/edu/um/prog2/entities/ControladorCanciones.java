@@ -192,7 +192,7 @@ public class ControladorCanciones {
 
         long ejecucionFin = System.currentTimeMillis();
 
-        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+        System.out.println("Se ejecutó la función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
@@ -261,7 +261,7 @@ public class ControladorCanciones {
 
         long ejecucionFin = System.currentTimeMillis();
 
-        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+        System.out.println("Se ejecutó la función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
@@ -380,7 +380,7 @@ public class ControladorCanciones {
 
         long ejecucionFin = System.currentTimeMillis();
 
-        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+        System.out.println("Se ejecutó la función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
@@ -429,7 +429,7 @@ public class ControladorCanciones {
 
         long ejecucionFin = System.currentTimeMillis();
 
-        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+        System.out.println("Se ejecutó la función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
@@ -522,7 +522,7 @@ public class ControladorCanciones {
 
         long ejecucionFin = System.currentTimeMillis();
 
-        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+        System.out.println("Se ejecutó la función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 

@@ -9,7 +9,8 @@ public class Main {
 
         long ejecucionInicio = System.currentTimeMillis();
 
-        //NOTA IMPORTANTE: Por algún motivo el país de la canción se vuelve null cuando se guarda en una lista de canciones como objeto, no se pierde ningún otro dato, pero imposibilita la ejecución de la primer consulta.
+        //NOTA IMPORTANTE: Por algún motivo el país de la canción se vuelve null cuando se guarda en una lista de canciones4
+        // como objeto, no se pierde ningún otro dato, pero imposibilita la ejecución de la primer consulta.
         ControladorCanciones nuevoControlador = new ControladorCanciones();
 
         long ejecucionFin = System.currentTimeMillis();
