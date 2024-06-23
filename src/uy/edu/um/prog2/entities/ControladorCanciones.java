@@ -30,7 +30,7 @@ public class ControladorCanciones {
 
         //Dirección del archivo .csv
         //EX.: Path filePath = Paths.get("C:", "Users", "user", "Desktop", "universal_top_spotify_songs.csv")
-        Path filePath = null;
+        Path filePath = Paths.get("src", "universal_top_spotify_songs.csv");
 
         if (filePath == null) {
 
