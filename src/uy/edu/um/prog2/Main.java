@@ -39,7 +39,8 @@ public class Main {
                     "2- Obtener el top de las 5 canciones que aparecen en más top 50 en un día dado\n" +
                     "3- Obtener el top de 7 artistas que más aparecen en los top 50 para un rango de fechas dado\n" +
                     "4- Obtener la cantidad de veces que aparece un artista específico en un top 50 en una fecha dada\n" +
-                    "5- Obtener la cantidad de canciones con un tempo en un rango específico para un rango específico de fechas"
+                    "5- Obtener la cantidad de canciones con un tempo en un rango específico para un rango específico de fechas\n" +
+                    "6- Salir"
             );
 
             option = input.nextLine();
@@ -72,13 +73,13 @@ public class Main {
 
                 case "5":
 
-
+                    nuevoControlador.obtenerCancionesConTempo();
 
                     break;
 
             }
 
-        } while (!option.equals("0"));
+        } while (!option.equals("6"));
 
     }
 

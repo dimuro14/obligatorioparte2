@@ -83,12 +83,6 @@ public class Cancion {
 
     }
 
-    public String getId() {
-
-        return this.spotify_id;
-
-    }
-
     public String getNombre() {
 
         return this.name;
@@ -114,47 +108,10 @@ public class Cancion {
         return this.country;
 
     }
-    public String getFecha() {
 
-        return this.snapshot_date;
+    public double getTempo() {
 
-    }
-
-    public int getPopularidad() {
-
-        return this.popularity;
-
-    }
-
-    public void mostrarAtributos() {
-
-        System.out.println(
-                this.spotify_id + " " +
-                this.name + " " +
-                this.artists + " " +
-                this.daily_rank + " " +
-                this.daily_movement + " " +
-                this.weekly_movement + " " +
-                this.country + " " +
-                this.snapshot_date + " " +
-                this.popularity + " " +
-                this.is_explicit + " " +
-                this.duration_ms + " " +
-                this.album_name + " " +
-                this.album_release_date + " " +
-                this.danceability + " " +
-                this.energy + " " +
-                this.key + " " +
-                this.loudness + " " +
-                this.mode + " " +
-                this.speechiness + " " +
-                this.acousticness + " " +
-                this.instrumentalness + " " +
-                this.liveness + " " +
-                this.valence + " " +
-                this.tempo + " " +
-                this.time_signature + " "
-        );
+        return this.tempo;
 
     }
 

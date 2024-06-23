@@ -272,14 +272,22 @@ public class ControladorCanciones {
 
         MyList<String> listaDeFechas = new MyLinkedListImpl<>();
 
-        LocalDate principioFechas = LocalDate.parse(fechaInicio);
-        LocalDate finFechas = LocalDate.parse(fechaFin);
+        if (!fechaInicio.equals(fechaFin)) {
 
-        List<LocalDate> todasLasFechas = principioFechas.datesUntil(finFechas).toList();
+            LocalDate principioFechas = LocalDate.parse(fechaInicio);
+            LocalDate finFechas = LocalDate.parse(fechaFin);
 
-        for (LocalDate fecha : todasLasFechas) {
+            List<LocalDate> todasLasFechas = principioFechas.datesUntil(finFechas).toList();
 
-            listaDeFechas.add(String.valueOf(fecha));
+            for (LocalDate fecha : todasLasFechas) {
+
+                listaDeFechas.add(String.valueOf(fecha));
+
+            }
+
+        } else {
+
+            listaDeFechas.add(fechaInicio);
 
         }
 
@@ -391,6 +399,91 @@ public class ControladorCanciones {
         }
 
         System.out.println("Apariciones de " + nombreArtista + " en el top 50 del día " + fechaDada + ": " + repeticiones);
+
+    }
+
+    public void obtenerCancionesConTempo() {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Ingrese el tempo mínimo: ");
+        double tempoMin = Double.parseDouble(input.nextLine());
+
+        System.out.println("Ingrese el tempo máximo: ");
+        double tempoMax = Double.parseDouble(input.nextLine());
+
+        System.out.println("Ingrese la fecha de inicio: ");
+        String fechaInicio = ingresarFecha();
+
+        System.out.println("Ingrese la fecha de fin: ");
+        String fechaFin = ingresarFecha();
+
+        if (hashSnapshots.get(fechaInicio) == null) {
+
+            System.out.println("Debe ingresar una fecha de inicio válida");
+
+            return;
+
+        }
+
+        if (hashSnapshots.get(fechaFin) == null) {
+
+            System.out.println("Debe ingresar una fecha de fin válida");
+
+            return;
+
+        }
+
+        MyList<String> listaDeFechas = new MyLinkedListImpl<>();
+
+        if (!fechaInicio.equals(fechaFin)) {
+
+            LocalDate principioFechas = LocalDate.parse(fechaInicio);
+            LocalDate finFechas = LocalDate.parse(fechaFin);
+
+            List<LocalDate> todasLasFechas = principioFechas.datesUntil(finFechas).toList();
+
+            for (LocalDate fecha : todasLasFechas) {
+
+                listaDeFechas.add(String.valueOf(fecha));
+
+            }
+
+        } else {
+
+            listaDeFechas.add(fechaInicio);
+
+        }
+
+        MyList<Cancion> cancionesConTempo = new MyLinkedListImpl<>();
+
+        for (int i = 0; i < listaDeFechas.size(); i++) {
+
+            String fechaDada = listaDeFechas.get(i);
+
+            for (int j = 0; j < 50; j++) {
+
+                Cancion cancionObtenida = hashSnapshots.get(fechaDada).get(j);
+
+                double cancionTempo = cancionObtenida.getTempo();
+
+                if (cancionTempo >= tempoMin && cancionTempo <= tempoMax) {
+
+                    cancionesConTempo.add(cancionObtenida);
+
+                }
+
+            }
+
+        }
+
+        System.out.println("Canciones con tempo desde " + tempoMin + " a " + tempoMax + ", desde el día " + fechaInicio + " al día " + fechaFin + ":");
+
+        for (int i = 0; i < cancionesConTempo.size(); i++) {
+
+            Cancion cancionObtenida = cancionesConTempo.get(i);
+
+        }
 
     }
 
