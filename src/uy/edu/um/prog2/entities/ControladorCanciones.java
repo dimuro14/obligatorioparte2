@@ -28,6 +28,8 @@ public class ControladorCanciones {
 
     public ControladorCanciones() {
 
+        //Dirección del archivo CSV
+        //EX.: Paths.get("C:", "Users", "user", "Desktop", "universal_top_spotify_songs.csv")
         Path filePath = Paths.get("C:", "Users", "luisd", "OneDrive", "Escritorio", "universal_top_spotify_songs.csv");
 
         CSVParser parser = new CSVParserBuilder()
@@ -73,9 +75,6 @@ public class ControladorCanciones {
                 break;
 
             }
-
-            //String paisCancion = cancionLeida[6];
-            //System.out.println(paisCancion);
 
             Cancion nuevaCancion = new Cancion(
                     cancionLeida[0],
