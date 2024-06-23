@@ -189,7 +189,6 @@ public class ControladorCanciones {
             }
 
             System.out.println((i + 1) + "- " + cancionObtenida.getNombre() + ", artista/s: " + Arrays.toString(cancionObtenida.getArtistas()) + ", puesto: " + cancionObtenida.getPuestoDiario());
-            System.out.println(cancionObtenida.getPais());
 
             topDiezCancionesEnPais.add(cancionObtenida);
 
