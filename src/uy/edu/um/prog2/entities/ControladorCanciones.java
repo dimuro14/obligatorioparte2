@@ -5,6 +5,7 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
+
 import uy.edu.um.adt.hash.MyHash;
 import uy.edu.um.adt.hash.MyHashImpl;
 import uy.edu.um.adt.heap.MyHeap;
@@ -50,7 +51,9 @@ public class ControladorCanciones {
                 .withCSVParser(parser)
                 .build();
 
-        for (int i = 0; i < 748803; i++) {
+        boolean finalizarLectura = false;
+
+        do {
 
             String[] cancionLeida;
 
@@ -61,6 +64,13 @@ public class ControladorCanciones {
             } catch (IOException | CsvValidationException e) {
 
                 throw new RuntimeException(e);
+
+            }
+
+            if (cancionLeida == null) {
+
+                finalizarLectura = true;
+                break;
 
             }
 
@@ -109,7 +119,7 @@ public class ControladorCanciones {
 
             cancionesDeFecha.add(nuevaCancion);
 
-        }
+        } while (!finalizarLectura);
 
     }
     private String ingresarFecha() {
