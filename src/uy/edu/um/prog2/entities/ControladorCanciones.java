@@ -27,8 +27,6 @@ public class ControladorCanciones {
 
     public ControladorCanciones() {
 
-        long ejecucionInicio = System.currentTimeMillis();
-
         Path filePath = Paths.get("C:", "Users", "luisd", "OneDrive", "Escritorio", "universal_top_spotify_songs.csv");
 
         CSVParser parser = new CSVParserBuilder()
@@ -110,10 +108,6 @@ public class ControladorCanciones {
             MyList<Cancion> cancionesDeFecha = hashSnapshots.get(fechaCancion);
 
             cancionesDeFecha.add(nuevaCancion);
-
-            long ejecucionFin = System.currentTimeMillis();
-
-            System.out.println("Se cargaron los datos en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
         }
 

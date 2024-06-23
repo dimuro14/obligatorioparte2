@@ -1,26 +1,20 @@
 package uy.edu.um.prog2;
 
-import com.opencsv.exceptions.CsvValidationException;
-import org.apache.commons.lang3.time.StopWatch;
-import uy.edu.um.adt.linkedlist.MyLinkedListImpl;
-import uy.edu.um.adt.linkedlist.MyList;
-import uy.edu.um.prog2.entities.Cancion;
 import uy.edu.um.prog2.entities.ControladorCanciones;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        long ejecucionInicio = System.currentTimeMillis();
+
+        //NOTA IMPORTANTE: Por algún motivo el país de la canción se vuelve null cuando se guarda en una lista de canciones como objeto, no se pierde ningún otro dato, pero imposibilita la ejecución de la primer consulta.
         ControladorCanciones nuevoControlador = new ControladorCanciones();
+
+        long ejecucionFin = System.currentTimeMillis();
+
+        System.out.println("Se cargaron los datos en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
         String option;
         Scanner input = new Scanner(System.in);
