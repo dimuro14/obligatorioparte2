@@ -20,13 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        long tiempoInicio = System.currentTimeMillis();
-
         ControladorCanciones nuevoControlador = new ControladorCanciones();
-
-        long tiempoFin = System.currentTimeMillis();
-
-        System.out.println("Se cargaron los datos en " + (float) (tiempoFin - tiempoInicio) / 1000 + " segundos");
 
         String option;
         Scanner input = new Scanner(System.in);

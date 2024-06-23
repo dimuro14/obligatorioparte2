@@ -89,6 +89,12 @@ public class Cancion {
 
     }
 
+    public String getPais() {
+
+        return this.country;
+
+    }
+
     public String[] getArtistas() {
 
         String[] nombresArtistas = this.artists.split(",");
@@ -103,9 +109,9 @@ public class Cancion {
 
     }
 
-    public String getPais() {
+    public int getPuestoDiario() {
 
-        return this.country;
+        return this.daily_rank;
 
     }
 

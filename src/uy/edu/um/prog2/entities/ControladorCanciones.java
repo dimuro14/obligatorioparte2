@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +26,8 @@ public class ControladorCanciones {
     private MyHash<String, MyList<Cancion>> hashSnapshots = new MyHashImpl<>();
 
     public ControladorCanciones() {
+
+        long ejecucionInicio = System.currentTimeMillis();
 
         Path filePath = Paths.get("C:", "Users", "luisd", "OneDrive", "Escritorio", "universal_top_spotify_songs.csv");
 
@@ -107,7 +110,10 @@ public class ControladorCanciones {
             MyList<Cancion> cancionesDeFecha = hashSnapshots.get(fechaCancion);
 
             cancionesDeFecha.add(nuevaCancion);
-            //cancionesDeFecha.get(0).mostrarAtributos();
+
+            long ejecucionFin = System.currentTimeMillis();
+
+            System.out.println("Se cargaron los datos en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
         }
 
@@ -116,7 +122,7 @@ public class ControladorCanciones {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Ingrese el año de la fecha:");
+        System.out.println("Año:");
         String year = String.valueOf(input.nextInt());
         year = year.trim();
         if (year.length() != 4) {
@@ -125,7 +131,7 @@ public class ControladorCanciones {
 
         }
 
-        System.out.println("Ingrese el mes de la fecha:");
+        System.out.println("Mes:");
         String month = String.valueOf(input.nextInt());
         month = month.trim();
         if (month.length() == 1) {
@@ -134,7 +140,7 @@ public class ControladorCanciones {
 
         }
 
-        System.out.println("Ingrese el día de la fecha:");
+        System.out.println("Día:");
         String day = String.valueOf(input.nextInt());
         day = day.trim();
         if (day.length() == 1) {
@@ -143,9 +149,7 @@ public class ControladorCanciones {
 
         }
 
-        String fechaDada = year + "-" + month + "-" + day;
-
-        return fechaDada;
+        return year + "-" + month + "-" + day;
 
     }
 
@@ -154,11 +158,13 @@ public class ControladorCanciones {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Ingrese la fecha: ");
-        String fechaDada = "2024-01-29"; //inputDate();
+        String fechaDada = ingresarFecha();
 
         System.out.println("Ingrese el país: ");
-        String paisDado = "AE"; //input.nextLine();
+        String paisDado = input.nextLine();
         paisDado = paisDado.trim();
+
+        long ejecucionInicio = System.currentTimeMillis();
 
         MyList<Cancion> topDiezCancionesEnPais = new MyLinkedListImpl<>();
 
@@ -172,7 +178,7 @@ public class ControladorCanciones {
 
             }
 
-            System.out.println(cancionObtenida.getNombre());
+            System.out.println((i + 1) + "- " + cancionObtenida.getNombre() + ", artista/s: " + Arrays.toString(cancionObtenida.getArtistas()) + ", puesto: " + cancionObtenida.getPuestoDiario());
             System.out.println(cancionObtenida.getPais());
 
             topDiezCancionesEnPais.add(cancionObtenida);
@@ -180,6 +186,10 @@ public class ControladorCanciones {
         }
 
         System.out.println(topDiezCancionesEnPais.size());
+
+        long ejecucionFin = System.currentTimeMillis();
+
+        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
@@ -195,6 +205,8 @@ public class ControladorCanciones {
             return;
 
         }
+
+        long ejecucionInicio = System.currentTimeMillis();
 
         MyHash<String, ContadorCancion> cancionesContadas = new MyHashImpl<>();
 
@@ -244,6 +256,10 @@ public class ControladorCanciones {
 
         }
 
+        long ejecucionFin = System.currentTimeMillis();
+
+        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+
     }
 
     public void obtenerTopSieteArtistasDeTop50() {
@@ -269,6 +285,8 @@ public class ControladorCanciones {
             return;
 
         }
+
+        long ejecucionInicio = System.currentTimeMillis();
 
         MyList<String> listaDeFechas = new MyLinkedListImpl<>();
 
@@ -357,6 +375,10 @@ public class ControladorCanciones {
 
         }
 
+        long ejecucionFin = System.currentTimeMillis();
+
+        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
+
     }
 
     public void obtenerAparicionesArtistaDeTop50() {
@@ -377,6 +399,8 @@ public class ControladorCanciones {
             return;
 
         }
+
+        long ejecucionInicio = System.currentTimeMillis();
 
         int repeticiones = 0;
 
@@ -399,6 +423,10 @@ public class ControladorCanciones {
         }
 
         System.out.println("Apariciones de " + nombreArtista + " en el top 50 del día " + fechaDada + ": " + repeticiones);
+
+        long ejecucionFin = System.currentTimeMillis();
+
+        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
@@ -433,6 +461,8 @@ public class ControladorCanciones {
             return;
 
         }
+
+        long ejecucionInicio = System.currentTimeMillis();
 
         MyList<String> listaDeFechas = new MyLinkedListImpl<>();
 
@@ -483,7 +513,13 @@ public class ControladorCanciones {
 
             Cancion cancionObtenida = cancionesConTempo.get(i);
 
+            System.out.println(cancionObtenida.getNombre() + ", tempo: " + cancionObtenida.getTempo());
+
         }
+
+        long ejecucionFin = System.currentTimeMillis();
+
+        System.out.println("Se ejecutó la primera función en " + (float) (ejecucionFin - ejecucionInicio) / 1000 + " segundos");
 
     }
 
