@@ -133,33 +133,33 @@ public class ControladorCanciones {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Año:");
-        String year = String.valueOf(input.nextInt());
-        year = year.trim();
-        if (year.length() != 4) {
+        String ano = String.valueOf(input.nextInt());
+        ano = ano.trim();
+        if (ano.length() != 4) {
 
-            year = "2024";
+            ano = "2024";
 
         }
 
         System.out.println("Mes:");
-        String month = String.valueOf(input.nextInt());
-        month = month.trim();
-        if (month.length() == 1) {
+        String mes = String.valueOf(input.nextInt());
+        mes = mes.trim();
+        if (mes.length() == 1) {
 
-            month = "0" + month;
+            mes = "0" + mes;
 
         }
 
         System.out.println("Día:");
-        String day = String.valueOf(input.nextInt());
-        day = day.trim();
-        if (day.length() == 1) {
+        String dia = String.valueOf(input.nextInt());
+        dia = dia.trim();
+        if (dia.length() == 1) {
 
-            day = "0" + day;
+            dia = "0" + dia;
 
         }
 
-        return year + "-" + month + "-" + day;
+        return ano + "-" + mes + "-" + dia;
 
     }
 
