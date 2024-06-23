@@ -1,13 +1,4 @@
 package uy.edu.um.prog2.entities;
-//[spotify_id, "name", "artists",
-// "daily_rank", "daily_movement", "weekly_movement",
-// "country", "snapshot_date", "popularity",
-// "is_explicit", "duration_ms", "album_name",
-// "album_release_date", "danceability", "energy",
-// "key", "loudness", "mode",
-// "speechiness", "acousticness", "instrumentalness",
-// "liveness", "valence", "tempo",
-// "time_signature"";;]
 
 public class Cancion {
 
@@ -61,7 +52,8 @@ public class Cancion {
                    double liveness,
                    double valence,
                    double tempo,
-                   int time_signature) {
+                   int time_signature
+        ) {
 
         this.spotify_id = spotify_id;
         this.name = name;
@@ -91,15 +83,78 @@ public class Cancion {
 
     }
 
-    public String obtenerFecha() {
+    public String getId() {
+
+        return this.spotify_id;
+
+    }
+
+    public String getNombre() {
+
+        return this.name;
+
+    }
+
+    public String[] getArtistas() {
+
+        String[] nombresArtistas = this.artists.split(",");
+
+        for (int i = 0; i < nombresArtistas.length; i++) {
+
+            nombresArtistas[i] = nombresArtistas[i].trim();
+
+        }
+
+        return nombresArtistas;
+
+    }
+
+    public String getPais() {
+
+        return this.country;
+
+    }
+    public String getFecha() {
 
         return this.snapshot_date;
 
     }
 
-    public int obtenerPopularidad() {
+    public int getPopularidad() {
 
         return this.popularity;
+
+    }
+
+    public void mostrarAtributos() {
+
+        System.out.println(
+                this.spotify_id + " " +
+                this.name + " " +
+                this.artists + " " +
+                this.daily_rank + " " +
+                this.daily_movement + " " +
+                this.weekly_movement + " " +
+                this.country + " " +
+                this.snapshot_date + " " +
+                this.popularity + " " +
+                this.is_explicit + " " +
+                this.duration_ms + " " +
+                this.album_name + " " +
+                this.album_release_date + " " +
+                this.danceability + " " +
+                this.energy + " " +
+                this.key + " " +
+                this.loudness + " " +
+                this.mode + " " +
+                this.speechiness + " " +
+                this.acousticness + " " +
+                this.instrumentalness + " " +
+                this.liveness + " " +
+                this.valence + " " +
+                this.tempo + " " +
+                this.time_signature + " "
+        );
 
     }
 

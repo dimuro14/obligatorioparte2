@@ -5,24 +5,14 @@ import uy.edu.um.adt.linkedlist.MyList;
 
 import java.util.HashMap;
 
-/**
- * Implementacion de MyHash Cerrado, que se autodimensiona
- * si el factor de carga supera 0.75
- */
 public class MyHashImpl<Key, Value> implements MyHash<Key, Value> {
 
 	private HashMap<Key, Value> map = null;
-	
-	/**
-	 * Crea un hash cerrado con la cantidad de buckets de 16
-	 */
+
 	public MyHashImpl() {
 		map = new HashMap<Key, Value>();
 	}
 
-	/**
-	 * Crea un hash cerrado con la cantidad de buckets inicial de "initialCapacity"
-	 */
 	public MyHashImpl(int initialCapacity) {
 		map = new HashMap<Key, Value>(initialCapacity);
 	}
