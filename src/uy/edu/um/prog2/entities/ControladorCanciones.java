@@ -28,9 +28,16 @@ public class ControladorCanciones {
 
     public ControladorCanciones() {
 
-        //Dirección del archivo CSV
-        //EX.: Paths.get("C:", "Users", "user", "Desktop", "universal_top_spotify_songs.csv")
-        Path filePath = Paths.get("C:", "Users", "luisd", "OneDrive", "Escritorio", "universal_top_spotify_songs.csv");
+        //Dirección del archivo .csv
+        //EX.: Path filePath = Paths.get("C:", "Users", "user", "Desktop", "universal_top_spotify_songs.csv")
+        Path filePath = null;
+
+        if (filePath == null) {
+
+            System.out.println("Debe ingresar la dirección del archivo .csv en el programa para su ejecución.");
+            System.exit(0);
+
+        }
 
         CSVParser parser = new CSVParserBuilder()
                 .withSeparator(',')
